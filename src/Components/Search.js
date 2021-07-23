@@ -2,14 +2,36 @@ import React, { Component } from 'react'
 require('dotenv').config()
 
 
+
+
 class Search extends Component {
     constructor(props){
         super(props);
         this.state = {
             trivia: ['trivia of all osrts of wonderful kinds that will amaze and adazzel yu and your family, even your friends tbh', 'will', 'show', 'up', 'here'],
             triviaObject: '',
-            imageURL: '' };
+            imageURL: '',
+        };
+        this.get = this.props.get
     }
+
+    // getMovieObject = (searchText) => {
+    //     // let URL = `https://imdb8.p.rapidapi.com/title/find?q=${this.formatSearchText(searchText)}`
+    //     this.get(`find?q=${this.formatSearchText(searchText)}`)
+    //     .then(response => { return response.json() } )
+    //     .then(json => {
+    //         this.setState({imageURL: json.results[0].image.url})
+    //         return this.getMovieCode(json);
+    //     })
+    //     .then(movieCode => {
+    //         return this.getMovieTrivia(movieCode);
+    //     })
+    //     .catch(err => {
+    //         console.error(err);
+    //     });
+    // }
+
+
 
     getMovieObject = (searchText) => {
         let URL = `https://imdb8.p.rapidapi.com/title/find?q=${this.formatSearchText(searchText)}`
@@ -50,7 +72,6 @@ class Search extends Component {
             }
         })
         .then(response => {
-            
             return response.json();
         })
         .then(json => {
